@@ -86,7 +86,8 @@ $url = site_url( 'wp-login.php?action=oauth1_authorize', 'login_post' );
 </form>
 
 <p id="nav">
-<a href="<?php echo esc_url( wp_login_url( $url, true ) ); ?>"><?php _e( 'Switch user' ) ?></a>
+<?php // TODO: This doesn't work because it's missing the `oauth_token` parameter ?>
+<!-- <a href="<?php // echo esc_url( wp_login_url( $url, true ) ); ?>"><?php // _e( 'Switch user' ) ?></a> -->
 <?php
 if ( get_option( 'users_can_register' ) ) :
 	$registration_url = sprintf( '<a href="%s">%s</a>', esc_url( wp_registration_url() ), __( 'Register' ) );
