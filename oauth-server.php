@@ -107,6 +107,12 @@ function rest_oauth1_loaded() {
 	if ( empty( $GLOBALS['wp']->query_vars['rest_oauth1'] ) )
 		return;
 
+	// Do not cache Authentication endpoints
+	// TODO: This needs a better approach
+	if ( function_exists( 'batcache_cancel' ) ) {
+		batcache_cancel();
+	}
+
 	$authenticator = new WP_REST_OAuth1();
 	$response = $authenticator->dispatch( $GLOBALS['wp']->query_vars['rest_oauth1'] );
 
